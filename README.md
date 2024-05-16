@@ -24,7 +24,7 @@ cd your-repository
 ### Build the Docker Image
 
 ```bash
-docker build -t automating-metadata-v1.
+docker build . -t automating-metadata-v1
 ```
 
 ### Run the Docker Container
