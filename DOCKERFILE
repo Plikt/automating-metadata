@@ -2,16 +2,17 @@
 FROM python:3.9
 
 # Set the working directory in the container
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy the script and requirements file into the container
-COPY app/ /usr/src/app/  
+COPY ./app ./
 
 # Install dependencies
 RUN pip install -r requirements.txt
 
 #run service - Expose (what is the request response model)
 EXPOSE 5001
+EXPOSE 5005
 
 ENV FLASK_APP=server.py
 

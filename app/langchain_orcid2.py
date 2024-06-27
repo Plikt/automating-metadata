@@ -46,7 +46,10 @@ load_dotenv(find_dotenv())
     return num_tokens"""
 
 def get_pdf_text(pdf_url):
-    ipfs="https://ipfs.desci.com/ipfs/"+pdf_url
+    ipfs_gateway_url =  os.getenv("IPFS_GATEWAY_URL", "https://ipfs.desci.com/ipfs/")
+    print(ipfs_gateway_url)
+    print(pdf_url)
+    ipfs = ipfs_gateway_url + pdf_url
   
     response = requests.get(ipfs) 
     
@@ -392,8 +395,8 @@ async def langchain_paper_search(pdf_CID):
     queries_schemas_docs = [
         ("Tell me who all the authors of this paper are. Your response should be a comma separated list of the authors of the paper, \
          looking like 'first author name, second author name", document),
-        ("Tell me the title of this paper", document),
-        ("Tell me the abstract of this paper, do not change any of the words only return the abstract as it is written", document)
+        ("Tell me the title of this paper well formatted with no suffix or prefix or unncessary descriptions", document),
+        ("Tell me the abstract of this paper, do not change any of the words only return the abstract as it is written, if paper has no abstract return and empy string", document)
     ]
 
     tasks = []

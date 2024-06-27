@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
-# Import your script
-from langchain_orcid2 import run as run_langchain
-from auth import validate_api_key
 import os
+# Import your script
+from .langchain_orcid2 import run as run_langchain
+from .auth import validate_api_key
 
 # Read environment variables
 cr_mailto = os.getenv('CR_MAILTO')
